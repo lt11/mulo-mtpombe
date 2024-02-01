@@ -61,6 +61,7 @@ for ind_v in $(find "${v_dir}" -name "*vcf.gz"); do
   ind_g=$(echo "${ind_v}" | sed 's|vardict|gatk|')
   ind_s=$(echo "${ind_v}" | sed 's|vardict|strelka|')
   sample_id=$(basename "${ind_v}" | sed 's|-norm.vcf.gz||')
+  ### strict filter:
   ### extract and write records from vardict
   ### shared by both vardict and gatk using exact allele match
   bcftools isec "${ind_v}" "${ind_g}" \
@@ -71,6 +72,7 @@ for ind_v in $(find "${v_dir}" -name "*vcf.gz"); do
   -n =2 -w 1 -O z -o "${sample_id}-isec.vcf.gz"
   rm -f "${sample_id}-temp-1.vcf.gz" "${sample_id}-temp-1.vcf.gz.tbi"
   
+  # ### lenient filter:
   # ### shared by both vardict and strelka using exact allele match
   # bcftools isec "${ind_v}" "${ind_s}" \
   # -n =2 -w 1 -O z -o "${sample_id}-temp-2.vcf.gz"
