@@ -67,20 +67,22 @@ for ind_v in $(find "${v_dir}" -name "*vcf.gz"); do
   -n =2 -w 1 -O z -o "${sample_id}-temp-1.vcf.gz"
   tabix -f -p vcf "${sample_id}-temp-1.vcf.gz"
   ### intersect the intersection with strelka
-  # bcftools isec "${sample_id}-temp.vcf.gz" "${ind_s}" \
-  # -n =2 -w 1 -O z -o "${sample_id}-isec.vcf.gz"
-  # rm -f "${sample_id}-temp.vcf.gz" "${sample_id}-temp.vcf.gz.tbi"
-  ### shared by both vardict and strelka using exact allele match
-  bcftools isec "${ind_v}" "${ind_s}" \
-  -n =2 -w 1 -O z -o "${sample_id}-temp-2.vcf.gz"
-  tabix -f -p vcf "${sample_id}-temp-2.vcf.gz"
-  ### concatenate the shared variants
-  bcftools concat -a -D \
-  "${sample_id}-temp-1.vcf.gz" \
-  "${sample_id}-temp-2.vcf.gz" \
-  -O z -o "${sample_id}-isec.vcf.gz"
+  bcftools isec "${sample_id}-temp-1.vcf.gz" "${ind_s}" \
+  -n =2 -w 1 -O z -o "${sample_id}-isec.vcf.gz"
   rm -f "${sample_id}-temp-1.vcf.gz" "${sample_id}-temp-1.vcf.gz.tbi"
-  rm -f "${sample_id}-temp-2.vcf.gz" "${sample_id}-temp-2.vcf.gz.tbi"
+  
+  # ### shared by both vardict and strelka using exact allele match
+  # bcftools isec "${ind_v}" "${ind_s}" \
+  # -n =2 -w 1 -O z -o "${sample_id}-temp-2.vcf.gz"
+  # tabix -f -p vcf "${sample_id}-temp-2.vcf.gz"
+  # ### concatenate the shared variants
+  # bcftools concat -a -D \
+  # "${sample_id}-temp-1.vcf.gz" \
+  # "${sample_id}-temp-2.vcf.gz" \
+  # -O z -o "${sample_id}-isec.vcf.gz"
+  # rm -f "${sample_id}-temp-1.vcf.gz" "${sample_id}-temp-1.vcf.gz.tbi"
+  # rm -f "${sample_id}-temp-2.vcf.gz" "${sample_id}-temp-2.vcf.gz.tbi"
+  
   ### make the header
   zgrep "^#" "${sample_id}-isec.vcf.gz" > "${sample_id}-isec-flt.vcf"
   ### keep only high-impact variants and keep indels

@@ -169,7 +169,7 @@ for (indS in allFiles) {
   
   ## plotting -----------------------------------------------------------------
   
-  allPlotPath <- file.path(dirOutRep, "all-af.pdf")
+  allPlotPath <- file.path(dirOutRep, paste0(replicateID, "-all-af.pdf"))
   allPlot <- ggplot(data = dfPlot,
                     aes(x = Sample_id,
                         y = Af_val,
