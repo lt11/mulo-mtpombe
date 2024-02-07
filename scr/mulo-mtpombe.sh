@@ -98,13 +98,13 @@ ref_name="pombe"
 # popu_samp="b12 d18 b31 d39 b50 d60 b69"
 # repl_ids="M12 M12 M12 M12 M12 M12 M12"
 ### run: Akanksha's g6
-# ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
-# popu_samp="b14 d20 b33 d41 b52 d62 b71"
-# repl_ids="M15 M15 M15 M15 M15 M15 M15"
-### run: Akanksha's g7
 ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
-popu_samp="b13 d19 b32 d40 b51 d61 b70"
-repl_ids="M14 M14 M14 M14 M14 M14 M14"
+popu_samp="b14 d20 b33 d41 b52 d62 b71"
+repl_ids="M15 M15 M15 M15 M15 M15 M15"
+### run: Akanksha's g7
+# ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
+# popu_samp="b13 d19 b32 d40 b51 d61 b70"
+# repl_ids="M14 M14 M14 M14 M14 M14 M14"
 
 ## system's settings ----------------------------------------------------------
 

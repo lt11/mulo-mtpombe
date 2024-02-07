@@ -46,8 +46,8 @@ for (( ind_i=0; ind_i<seq_dim; ind_i++ )); do
 
   (
   ### input bam files
-  popu_bam="${popu_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam"
-  ctrl_bam="${ctrl_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam"
+  popu_bam="${popu_samp[ind_i]}-${ref_name}-srt-mdp.bam"
+  ctrl_bam="${ctrl_samp[ind_i]}-${ref_name}-srt-mdp.bam"
   ### sample working folder
   samp_ctrl_pair="${popu_samp[ind_i]}-vs-${ctrl_samp[ind_i]}"
   run_dir="${out_dir}/${samp_ctrl_pair}"

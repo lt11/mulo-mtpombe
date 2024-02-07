@@ -169,6 +169,7 @@ for (indS in allFiles) {
   
   ## plotting -----------------------------------------------------------------
   
+  ### time series of all the variants
   allPlotPath <- file.path(dirOutRep, paste0(replicateID, "-all-af.pdf"))
   allPlot <- ggplot(data = dfPlot,
                     aes(x = Sample_id,
@@ -202,6 +203,7 @@ for (indS in allFiles) {
   print(allPlot)
   dev.off()
   
+  ### time series of a single variant
   for (indP in unique(dfPlot$Var_id)) {
     indB <- which(dfPlot$Var_id == indP)
     dfSingPlot <- dfPlot[indB, ]
@@ -231,7 +233,8 @@ for (indS in allFiles) {
             # face = "bold", hjust = 1), 
             # axis style
             axis.title = element_text(size = 22), 
-            axis.text = element_text(size = 22)) +
+            axis.text.x = element_text(size = 14, angle = 45),
+            axis.text.y = element_text(size = 22)) +
       coord_cartesian(ylim = c(.0, 1.)) +
       labs(title = strTitle, subtitle = strSubTitle,
            x = "Sample",

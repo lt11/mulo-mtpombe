@@ -65,8 +65,8 @@ for (( ind_i=0; ind_i<seq_dim; ind_i++ )); do
   ### call matched-sample
   gatk Mutect2 \
   -R "${ref_path}" \
-  -I "${popu_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam" \
-  -I "${ctrl_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam" \
+  -I "${popu_samp[ind_i]}-${ref_name}-srt-mdp.bam" \
+  -I "${ctrl_samp[ind_i]}-${ref_name}-srt-mdp.bam" \
   -normal "${ctrl_samp[ind_i]}" \
   -L "${intervals_file}" \
   --max-mnp-distance 2 \
@@ -79,7 +79,7 @@ wait
 ### call t6 unmatched (obsolete)
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I t6-rerio-srt-mdp-rg.bam \
+# -I t6-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/t6.vcf.gz" &> "${log_dir}/t6-mutect.log" &
@@ -87,8 +87,8 @@ wait
 ### call t6 matched (start from here)
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I t6-rerio-srt-mdp-rg.bam \
-# -I s1-rerio-srt-mdp-rg.bam \
+# -I t6-rerio-srt-mdp.bam \
+# -I s1-rerio-srt-mdp.bam \
 # -normal s1 \
 # -L "1" \
 # --max-mnp-distance 0 \
@@ -98,77 +98,77 @@ wait
 ### step 1: call all the normals
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s1-rerio-srt-mdp-rg.bam \
+# -I s1-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s1.vcf.gz" &> "${log_dir}/s1-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s2-rerio-srt-mdp-rg.bam \
+# -I s2-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s2.vcf.gz" &> "${log_dir}/s2-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s3-rerio-srt-mdp-rg.bam \
+# -I s3-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s3.vcf.gz" &> "${log_dir}/s3-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s4-rerio-srt-mdp-rg.bam \
+# -I s4-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s4.vcf.gz" &> "${log_dir}/s4-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s5-rerio-srt-mdp-rg.bam \
+# -I s5-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s5.vcf.gz" &> "${log_dir}/s5-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s6-rerio-srt-mdp-rg.bam \
+# -I s6-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s6.vcf.gz" &> "${log_dir}/s6-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s7-rerio-srt-mdp-rg.bam \
+# -I s7-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s7.vcf.gz" &> "${log_dir}/s7-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s8-rerio-srt-mdp-rg.bam \
+# -I s8-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s8.vcf.gz" &> "${log_dir}/s8-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s9-rerio-srt-mdp-rg.bam \
+# -I s9-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s9.vcf.gz" &> "${log_dir}/s9-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s10-rerio-srt-mdp-rg.bam \
+# -I s10-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s10.vcf.gz" &> "${log_dir}/s10-mutect.log" &
 
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I s11-rerio-srt-mdp-rg.bam \
+# -I s11-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # -O "${out_dir}/s11.vcf.gz" &> "${log_dir}/s11-mutect.log" &
@@ -200,7 +200,7 @@ wait
 ### step 3: call t6 against the panel of normals (obsolete)
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I t6-rerio-srt-mdp-rg.bam \
+# -I t6-rerio-srt-mdp.bam \
 # -L "1" \
 # --max-mnp-distance 0 \
 # --panel-of-normals "${out_dir}/pooled-normals.vcf.gz" \
@@ -229,8 +229,8 @@ wait
 ### call t6 matched and against the panel of normals, and make the f1r2 file
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I t6-rerio-srt-mdp-rg.bam \
-# -I s1-rerio-srt-mdp-rg.bam \
+# -I t6-rerio-srt-mdp.bam \
+# -I s1-rerio-srt-mdp.bam \
 # -normal s1 \
 # --panel-of-normals "${out_dir}/pooled-normals.vcf.gz" \
 # -L "1" \
@@ -251,7 +251,7 @@ wait
 ### call t6 unmatched but against the panel of normals, and make the f1r2 file
 # gatk Mutect2 \
 # -R "${ref_path}" \
-# -I t6-rerio-srt-mdp-rg.bam \
+# -I t6-rerio-srt-mdp.bam \
 # --panel-of-normals "${out_dir}/pooled-normals.vcf.gz" \
 # -L "1" \
 # --max-mnp-distance 0 \

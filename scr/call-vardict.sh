@@ -129,7 +129,7 @@ bedtools makewindows -b "${path_callable_bed}" -w 10000 -s 9850 > "${path_callab
 ### call t6 alone
 # vardict -th "${n_threads}" -G "${ref_path}" \
 # -f "${min_af}" --nosv -N t6 \
-# -b t6-rerio-srt-mdp-rg.bam \
+# -b t6-rerio-srt-mdp.bam \
 # -C -c 1 -S 2 -E 3 "${path_callable_bed}" | \
 # teststrandbias.R | \
 # var2vcf_valid.pl -N t6 -E > "${out_dir}/t6.vcf" &
@@ -150,8 +150,8 @@ for (( ind_i=0; ind_i<seq_dim; ind_i++ )); do
 
   (
   ### call a sample against its control
-  popu_bam="${popu_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam"
-  ctrl_bam="${ctrl_samp[ind_i]}-${ref_name}-srt-mdp-rg.bam"
+  popu_bam="${popu_samp[ind_i]}-${ref_name}-srt-mdp.bam"
+  ctrl_bam="${ctrl_samp[ind_i]}-${ref_name}-srt-mdp.bam"
   # echo "Processing bam: ${popu_bam}"
   # echo "Against bam: ${ctrl_bam}"
   tmp_vcf="${out_dir}/${popu_samp[ind_i]}-vs-${ctrl_samp[ind_i]}-tmp.vcf"
