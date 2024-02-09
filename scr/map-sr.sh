@@ -8,7 +8,7 @@
 
 full_dir=$(cd $(dirname "${0}") && pwd)
 base_dir=$(dirname "${full_dir}")
-n_threads=24
+n_threads=22
 pll_runs=2
 ref_name="${1}"
 ctrl_samp="${2}"
@@ -16,7 +16,7 @@ popu_samp="${3}"
 
 ### output folder
 out_dir="${base_dir}/map-sr"
-if [[ ! -d "${out_dir}" ]]; then rm -rf "${out_dir}"; fi
+if [[ -d "${out_dir}" ]]; then rm -rf "${out_dir}"; fi
 mkdir -p "${out_dir}"
 
 ## clmnt  ---------------------------------------------------------------------

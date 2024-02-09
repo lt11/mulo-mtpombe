@@ -90,13 +90,13 @@ ref_name="pombe"
 # popu_samp="b100 b101 a30 b102 b103 a31 d1 d2 d3 a32 a33 c15 c16 c17 c18 c19 a34"
 # repl_ids="V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14"
 ### run: Daniel's g3
-ctrl_samp="b92 b92 b92 b92 b96 b96 b96 b96"
-popu_samp="b93 b94 b95 d4 b97 b98 b99 d5"
-repl_ids="V12 V12 V12 V12 V13 V13 V13 V13"
+# ctrl_samp="b92 b92 b92 b92 b96 b96 b96 b96"
+# popu_samp="b93 b94 b95 d4 b97 b98 b99 d5"
+# repl_ids="V12 V12 V12 V12 V13 V13 V13 V13"
 ### run: Akanksha's g5
-# ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
-# popu_samp="b12 d18 b31 d39 b50 d60 b69"
-# repl_ids="M12 M12 M12 M12 M12 M12 M12"
+ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
+popu_samp="b12 d18 b31 d39 b50 d60 b69"
+repl_ids="M12 M12 M12 M12 M12 M12 M12"
 ### run: Akanksha's g6
 # ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
 # popu_samp="b14 d20 b33 d41 b52 d62 b71"
@@ -122,7 +122,7 @@ bash index-ref.sh "${ref_name}" \
 > "logs/index-ref.out" 2> "logs/index-ref.err"
 
 ### mapping
-bash map-sr.sh "${ref_name}" \
+bash map-sr.sh "${ref_name}" "${ctrl_samp}" "${popu_samp}" \
 > "logs/map-sr.out" 2> "logs/map-sr.err"
 
 ### coverage statistics
