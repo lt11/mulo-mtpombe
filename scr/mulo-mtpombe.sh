@@ -90,17 +90,17 @@ ref_name="pombe"
 # popu_samp="b100 b101 a30 b102 b103 a31 d1 d2 d3 a32 a33 c15 c16 c17 c18 c19 a34"
 # repl_ids="V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14 V14"
 ### run: Daniel's g3
-# ctrl_samp="b92 b92 b92 b92 b96 b96 b96 b96"
-# popu_samp="b93 b94 b95 d4 b97 b98 b99 d5"
-# repl_ids="V12 V12 V12 V12 V13 V13 V13 V13"
+ctrl_samp="b92 b92 b92 b92 b96 b96 b96 b96"
+popu_samp="b93 b94 b95 d4 b97 b98 b99 d5"
+repl_ids="V12 V12 V12 V12 V13 V13 V13 V13"
 ### run: Akanksha's g5
 # ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
 # popu_samp="b12 d18 b31 d39 b50 d60 b69"
 # repl_ids="M12 M12 M12 M12 M12 M12 M12"
 ### run: Akanksha's g6
-ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
-popu_samp="b14 d20 b33 d41 b52 d62 b71"
-repl_ids="M15 M15 M15 M15 M15 M15 M15"
+# ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
+# popu_samp="b14 d20 b33 d41 b52 d62 b71"
+# repl_ids="M15 M15 M15 M15 M15 M15 M15"
 ### run: Akanksha's g7
 # ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
 # popu_samp="b13 d19 b32 d40 b51 d61 b70"
@@ -128,10 +128,6 @@ bash map-sr.sh "${ref_name}" \
 ### coverage statistics
 bash depth-stats.sh \
 > "logs/depth-stats.out" 2> "logs/depth-stats.err"
-
-### preparation of bam files for gatk
-bash prep-bam.sh \
-> "logs/prep-bam.out" 2> "logs/prep-bam.err"
 
 (
 ### mappability calculation
