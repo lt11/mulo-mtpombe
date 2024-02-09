@@ -27,7 +27,7 @@ fixes the bam file (fixmate and markdup)..."
 cd "${base_dir}"
 ref_path=$(find "${base_dir}/ref" -name "${ref_name}*fa")
 
-all_fqs=$(echo "${ctrl_samp} ${popu_samp}" | sort | uniq)
+all_fqs=$(echo "${ctrl_samp} ${popu_samp}" | tr " " "\n" | sort | uniq)
 pll_check=$((pll_runs + 1))
 for ind_e in ${all_fqs}; do
   ### parallel samples
