@@ -57,6 +57,7 @@ for ind_r in ${unq_repl}; do
     fi
   done
   ### merge to one multisample vcf with bcftools
+  ### (will be used by parse-plot-af.R for the time-series)
   if [[ -f "${out_dir}/multis-${ind_r}.vcf.gz" ]]; then
     rm -f "${out_dir}/multis-${ind_r}.vcf.gz"
   fi
@@ -72,12 +73,12 @@ for ind_r in ${unq_repl}; do
   bcftools sort -O z -o "${out_dir}/ctrl-${ind_r}-ctmp.vcf.gz"
   tabix -f -p vcf "${out_dir}/ctrl-${ind_r}-ctmp.vcf.gz"
   ### merge "${out_dir}/multis-${ind_r}.vcf.gz" and control data 
-  ### (for the annotation in cancer mode)
+  ### (wil be used by anno-snpeff.sh for the annotation in cancer mode)
   bcftools merge --output-type z --threads "${n_threads}" \
   "${out_dir}/multis-${ind_r}.vcf.gz" \
   "${out_dir}/ctrl-${ind_r}-ctmp.vcf.gz" \
-  > "${out_dir}/ctrl-smpl-${ind_r}.vcf.gz"
-  tabix -f -p vcf "${out_dir}/ctrl-smpl-${ind_r}.vcf.gz"
+  > "${out_dir}/smpls-ctrl-${ind_r}.vcf.gz"
+  tabix -f -p vcf "${out_dir}/smpls-ctrl-${ind_r}.vcf.gz"
 done
 
 ### cleaning
