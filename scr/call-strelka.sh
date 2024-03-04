@@ -11,7 +11,7 @@ base_dir=$(dirname "${full_dir}")
 ### one chromosome per thread
 ### (with M threads if M > N, it takes N threads if we have N chromosomes)
 n_threads=8
-pll_runs=5
+pll_runs=2
 ref_name="${1}"
 read -a popu_samp <<< "${2}"
 read -a ctrl_samp <<< "${3}"

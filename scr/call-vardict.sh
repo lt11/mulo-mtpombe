@@ -48,7 +48,7 @@
 full_dir=$(cd $(dirname "${0}") && pwd)
 base_dir=$(dirname "${full_dir}")
 n_threads=8
-pll_runs=5
+pll_runs=2
 ref_name="${1}"
 read -a popu_samp <<< "${2}"
 read -a ctrl_samp <<< "${3}"
@@ -79,7 +79,7 @@ fai_path="${ref_path}.fai"
 min_af="0.10"
 
 ### increase memory for java
-export _JAVA_OPTIONS="-Xms8g -Xmx64g"
+export _JAVA_OPTIONS="-Xms8g -Xmx128g"
 
 ## clmnt  ---------------------------------------------------------------------
 

@@ -86,7 +86,7 @@ hdVcfFix <- c("Chrom_id", "Pos_bp", "Var_id", "Ref_allele", "Alt_allele",
 ## clmnt ----------------------------------------------------------------------
 
 ### get all multisample files (one file has all the time-points)
-allFiles <- list.files(dirIn, pattern = ".vcf.gz$", full.names = T)
+allFiles <- list.files(dirIn, pattern = "^multis-.*vcf.gz$", full.names = T)
 for (indS in allFiles) {
   dfVcf <- read.table(file = indS)
   strVcf <- readLines(indS)

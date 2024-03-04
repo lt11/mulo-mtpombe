@@ -6,33 +6,37 @@
 
 ## user's settings ------------------------------------------------------------
 
+### internal reference name
 ref_name="pombe"
+
+### set path to snpeff.jar
+snpeff_path="/home/tools/lib/snpeff/snpeff-5.1.4/snpEff.jar"
 
 ### sample IDs in the correct order, i.e. from the earlier to latest
 ### time-points, so that the time series plots are correctly sorted
 
 ### run: Akanksha's g1
-# ctrl_samp="b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1"
-# popu_samp="b2 b3 b4 b15 b16 c1 \
-# d6 d7 d8 d9 d21 d22 \
-# b21 b22 b23 b34 b35 c3 \
-# d27 d28 d29 d30 d42 d43 \
-# c5 b41 b42 b53 c10 c6 \
-# d48 d49 d50 d51 d63 d64 \
-# b59 b60 b61 b72 b73 c13"
-# repl_ids="M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2"
+ctrl_samp="b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1 \
+b1 b1 b1 b1 b1 b1"
+popu_samp="b2 b3 b4 b15 b16 c1 \
+d6 d7 d8 d9 d21 d22 \
+b21 b22 b23 b34 b35 c3 \
+d27 d28 d29 d30 d42 d43 \
+c5 b41 b42 b53 c10 c6 \
+d48 d49 d50 d51 d63 d64 \
+b59 b60 b61 b72 b73 c13"
+repl_ids="M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2"
 ### run: Akanksha's g2
 # ctrl_samp="b1 b1 b1 b1 b1 b1 \
 # b1 b1 b1 b1 b1 b1 \
@@ -77,7 +81,7 @@ ref_name="pombe"
 # M8 M9 M10 D8 D9 M11 \
 # M8 M9 M10 D8 D9 M11 \
 # M8 M9 M10 D8 D9 M11"
-## run: Akanksha's g4
+### run: Akanksha's g4
 # ctrl_samp="b78 b82 b86 b78 b82 b86 b78 b82 b86 b78 b82 b86 b78 b82 b86 b78 b82 b86"
 # popu_samp="d69 d70 d71 b79 b83 b87 d72 d73 d74 b80 b84 b88 d75 d76 d77 b81 b85 b89"
 # repl_ids="V8 V9 V10 V8 V9 V10 V8 V9 V10 V8 V9 V10 V8 V9 V10 V8 V9 V10"
@@ -94,9 +98,9 @@ ref_name="pombe"
 # popu_samp="b93 b94 b95 d4 b97 b98 b99 d5"
 # repl_ids="V12 V12 V12 V12 V13 V13 V13 V13"
 ### run: Akanksha's g5
-ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
-popu_samp="b12 d18 b31 d39 b50 d60 b69"
-repl_ids="M12 M12 M12 M12 M12 M12 M12"
+# ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
+# popu_samp="b12 d18 b31 d39 b50 d60 b69"
+# repl_ids="M12 M12 M12 M12 M12 M12 M12"
 ### run: Akanksha's g6
 # ctrl_samp="b1 b1 b1 b1 b1 b1 b1"
 # popu_samp="b14 d20 b33 d41 b52 d62 b71"
@@ -113,9 +117,9 @@ if [[ ! -d "logs" ]]; then mkdir "logs"; fi
 
 ## clmnt ----------------------------------------------------------------------
 
-### quality check
-bash fq-check.sh \
-> "logs/fq-check.out" 2> "logs/fq-check.err" &
+# ### quality check
+# bash fq-check.sh \
+# > "logs/fq-check.out" 2> "logs/fq-check.err" &
 
 ### reference indexing
 bash index-ref.sh "${ref_name}" \
@@ -164,12 +168,16 @@ bash int-flt-var.sh \
 > "logs/int-flt-var.out" 2> "logs/int-flt-var.err"
 
 ### merge the variants of evolved samples
-bash merge-smallv.sh "${popu_samp}" "${repl_ids}" \
+bash merge-smallv.sh "${ctrl_samp}" "${popu_samp}" "${repl_ids}" \
 > "logs/merge-smallv.out" 2> "logs/merge-smallv.err"
 
 ### parse and plot time-points (sorted as the IDs)
 Rscript parse-plot-af.R \
 > "logs/parse-plot-af.out" 2> "logs/parse-plot-af.err"
+
+### annotation with snpeff
+bash anno-snpeff.sh "${snpeff_path}" \
+> "logs/anno-snpeff.out" 2> "logs/anno-snpeff.err"
 
 echo "Prematura la supercazola o scherziamo?"
 echo "[Conte Lello Mascetti]"
