@@ -16,28 +16,6 @@ snpeff_path="/home/tools/lib/snpeff/snpeff-5.1.4/snpEff.jar"
 ### time-points, so that the time series plots are correctly sorted
 
 ### run: Akanksha's g1
-# ctrl_samp="b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1 \
-# b1 b1 b1 b1 b1 b1"
-# popu_samp="b2 b3 b4 b15 b16 c1 \
-# d6 d7 d8 d9 d21 d22 \
-# b21 b22 b23 b34 b35 c3 \
-# d27 d28 d29 d30 d42 d43 \
-# c5 b41 b42 b53 c10 c6 \
-# d48 d49 d50 d51 d63 d64 \
-# b59 b60 b61 b72 b73 c13"
-# repl_ids="M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2 \
-# M0 M1 M3 D0 D2 M2"
-### run: Akanksha's g2
 ctrl_samp="b1 b1 b1 b1 b1 b1 \
 b1 b1 b1 b1 b1 b1 \
 b1 b1 b1 b1 b1 b1 \
@@ -45,20 +23,42 @@ b1 b1 b1 b1 b1 b1 \
 b1 b1 b1 b1 b1 b1 \
 b1 b1 b1 b1 b1 b1 \
 b1 b1 b1 b1 b1 b1"
-popu_samp="b5 b6 b7 b8 b17 b18 \
-d10 d11 d12 d13 d23 d24 \
-b24 b25 b26 b27 b36 b37 \
-d31 d32 d33 d34 d44 d45 \
-b43 b44 c7 b46 c11 b56 \
-d52 d53 d54 d55 d65 d66 \
-b62 b63 b64 b65 b74 b75"
-repl_ids="M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6 \
-M4 M5 M6 M7 D4 D6"
+popu_samp="b2 b3 b4 b15 b16 c1 \
+d6 d7 d8 d9 d21 d22 \
+b21 b22 b23 b34 b35 c3 \
+d27 d28 d29 d30 d42 d43 \
+c5 b41 b42 b53 c10 c6 \
+d48 d49 d50 d51 d63 d64 \
+b59 b60 b61 b72 b73 c13"
+repl_ids="M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2 \
+M0 M1 M3 D0 D2 M2"
+### run: Akanksha's g2
+# ctrl_samp="b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1 \
+# b1 b1 b1 b1 b1 b1"
+# popu_samp="b5 b6 b7 b8 b17 b18 \
+# d10 d11 d12 d13 d23 d24 \
+# b24 b25 b26 b27 b36 b37 \
+# d31 d32 d33 d34 d44 d45 \
+# b43 b44 c7 b46 c11 b56 \
+# d52 d53 d54 d55 d65 d66 \
+# b62 b63 b64 b65 b74 b75"
+# repl_ids="M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6 \
+# M4 M5 M6 M7 D4 D6"
 ### run: Akanksha's g3
 # ctrl_samp="b1 b1 b1 b1 b1 b1 \
 # b1 b1 b1 b1 b1 b1 \
@@ -151,21 +151,21 @@ if [[ ! -d "logs" ]]; then mkdir "logs"; fi
 # bash call-gatk.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
 # > "logs/call-gatk.out" 2> "logs/call-gatk.err"
 
-# ### vardict sets the filters
-# bash call-vardict.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
-# > "logs/call-vardict.out" 2> "logs/call-vardict.err"
+### vardict sets the filters
+bash call-vardict.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
+> "logs/call-vardict.out" 2> "logs/call-vardict.err"
 
-# ### calling with strelka (who controls nothing)
-# bash call-strelka.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
-# > "logs/call-strelka.out" 2> "logs/call-strelka.err"
+### calling with strelka (who controls nothing)
+bash call-strelka.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
+> "logs/call-strelka.out" 2> "logs/call-strelka.err"
 
-# ### normalise and de-duplicate the variants
-# bash norm-var.sh \
-# > "logs/norm-var.out" 2> "logs/norm-var.err"
+### normalise and de-duplicate the variants
+bash norm-var.sh \
+> "logs/norm-var.out" 2> "logs/norm-var.err"
 
-# ### intersect and filter
-# bash int-flt-var.sh \
-# > "logs/int-flt-var.out" 2> "logs/int-flt-var.err"
+### intersect and filter
+bash int-flt-var.sh \
+> "logs/int-flt-var.out" 2> "logs/int-flt-var.err"
 
 ### merge the variants of evolved samples
 bash merge-smallv.sh "${ctrl_samp}" "${popu_samp}" "${repl_ids}" \
