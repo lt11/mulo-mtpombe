@@ -37,9 +37,11 @@ for ind_m in $(ls "map-sr/"*"bam"); do
   grep "^@SQ" | cut -f 3 | cut -d ":" -f 2 | \
   awk '{sum += $1} END {print sum}')
   awk -v RL="${ref_len}" 'BEGIN {FS="\t"} {sum+=$3; sumsq+=$3*$3} \
-  END {print "Covered sites=" NR; print "Reference covered (%)=" 100*NR/RL; \
-  print "Reference size=" RL; print "Mean (depth)=",sum/NR; \
-  print "SD (depth)=",sqrt(sumsq/NR - (sum/NR)**2)}' \
+  END {print "Covered sites = " NR; \
+  print "Contig covered (%) = " 100*NR/RL; \
+  print "Contig size = " RL; \
+  print "Mean (depth) =", sum/NR; \
+  print "SD (depth) =", sqrt(sumsq/NR - (sum/NR)**2)}' \
   "${out_dir}/${map_name}-depth.txt" > "${out_dir}/${map_name}-mean.txt"
   ) &
 done

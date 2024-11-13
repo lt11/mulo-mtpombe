@@ -27,7 +27,7 @@ echo "Running the one that annotates the variants with snpeff..."
 vcf_files=$(find "${in_dir}" -name "smpls-ctrl*.vcf.gz")
 
 for ind_f in ${vcf_files}; do
-  ### get the id of the control (the last column),
+  ### get the id ID the control (the last column),
   ### the evolved samples, and the replicate
   ctrl_id=$(zgrep "^#C" "${ind_f}" | rev | cut -f 1 | rev)
   popu_samps=$(zgrep "^#C" "${ind_f}" | cut -f 10- | rev | cut -f 2- | rev)

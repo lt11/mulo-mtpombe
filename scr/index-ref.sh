@@ -19,7 +19,7 @@ if [[ ! -d "${out_dir}" ]]; then mkdir -p "${out_dir}"; fi
 
 echo "Running the one that creates the ref folder..."
 
-### copy the reference and make indexes for BWA
+### copy the reference and make indexes for bwa
 cp "${rep_dir}/${ref_name}-genome.fa" "${out_dir}"
 ref_path=$(find "${out_dir}" -name "${ref_name}*fa")
 bwa index "${ref_path}"
@@ -27,5 +27,5 @@ bwa index "${ref_path}"
 ### index for samtools
 samtools faidx "${ref_path}"
 
-### index for GATK
+### index for gatk
 gatk CreateSequenceDictionary -R "${ref_path}"
