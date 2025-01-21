@@ -15,7 +15,7 @@
 ###
 ### Another level of filtering may be added by checking the strand bias
 ### for ALL the variants
-### using the SBF tag of the BIAS tag (better the latter).
+### using the SBF tag or the BIAS tag (better the latter).
 ### The p-value is already calculated and encoded in the SBF tag of the FORMAT field.
 ### We can use the BIAS tag of the FORMAT field which
 ### can take values [0-2];[0-2] (i.e. "0;2", "2;1" and separator can be another in paired and single VCF).
