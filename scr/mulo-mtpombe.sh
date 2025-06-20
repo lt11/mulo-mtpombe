@@ -117,55 +117,55 @@ if [[ ! -d "logs" ]]; then mkdir "logs"; fi
 
 ## clmnt ----------------------------------------------------------------------
 
-# ### quality check
-# bash fq-check.sh \
-# > "logs/fq-check.out" 2> "logs/fq-check.err" &
+### quality check
+bash fq-check.sh \
+> "logs/fq-check.out" 2> "logs/fq-check.err" &
 
-# ### reference indexing
-# bash index-ref.sh "${ref_name}" \
-# > "logs/index-ref.out" 2> "logs/index-ref.err"
+### reference indexing
+bash index-ref.sh "${ref_name}" \
+> "logs/index-ref.out" 2> "logs/index-ref.err"
 
-# ### mapping
-# bash map-sr.sh "${ref_name}" "${ctrl_samp}" "${popu_samp}" \
-# > "logs/map-sr.out" 2> "logs/map-sr.err"
+### mapping
+bash map-sr.sh "${ref_name}" "${ctrl_samp}" "${popu_samp}" \
+> "logs/map-sr.out" 2> "logs/map-sr.err"
 
-# ### coverage statistics
-# bash depth-stats.sh \
-# > "logs/depth-stats.out" 2> "logs/depth-stats.err"
+### coverage statistics
+bash depth-stats.sh \
+> "logs/depth-stats.out" 2> "logs/depth-stats.err"
 
-# (
-# ### mappability calculation
-# bash gem.sh "${ref_name}" "${read_len}" \
-# > "logs/gem.out" 2> "logs/gem.err"
+(
+### mappability calculation
+bash gem.sh "${ref_name}" "${read_len}" \
+> "logs/gem.out" 2> "logs/gem.err"
 
-# ### GC-content calculation
-# bash gc-fastas.sh "${ref_name}" \
-# > "logs/gc-fastas.out" 2> "logs/gc-fastas.err"
+### GC-content calculation
+bash gc-fastas.sh "${ref_name}" \
+> "logs/gc-fastas.out" 2> "logs/gc-fastas.err"
 
-# ### call copy-number variants (single-sample mode)
-# bash cnv-freec.sh \
-# > "logs/cnv-freec.out" 2> "logs/cnv-freec.err" 
-# ) &
+### call copy-number variants (single-sample mode)
+bash cnv-freec.sh \
+> "logs/cnv-freec.out" 2> "logs/cnv-freec.err" 
+) &
 
-# ### gatk controls which chromosomes are callable (with "chr_callable")
-# bash call-gatk.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
-# > "logs/call-gatk.out" 2> "logs/call-gatk.err"
+### gatk controls which chromosomes are callable (with "chr_callable")
+bash call-gatk.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
+> "logs/call-gatk.out" 2> "logs/call-gatk.err"
 
-# ### vardict sets the filters
-# bash call-vardict.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
-# > "logs/call-vardict.out" 2> "logs/call-vardict.err"
-# 
-# ### calling with strelka (who controls nothing)
-# bash call-strelka.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
-# > "logs/call-strelka.out" 2> "logs/call-strelka.err"
-# 
-# ### normalise and de-duplicate the variants
-# bash norm-var.sh \
-# > "logs/norm-var.out" 2> "logs/norm-var.err"
-# 
-# ### intersect and filter
-# bash int-flt-var.sh \
-# > "logs/int-flt-var.out" 2> "logs/int-flt-var.err"
+### vardict sets the filters
+bash call-vardict.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
+> "logs/call-vardict.out" 2> "logs/call-vardict.err"
+
+### calling with strelka (who controls nothing)
+bash call-strelka.sh "${ref_name}" "${popu_samp}" "${ctrl_samp}" \
+> "logs/call-strelka.out" 2> "logs/call-strelka.err"
+
+### normalise and de-duplicate the variants
+bash norm-var.sh \
+> "logs/norm-var.out" 2> "logs/norm-var.err"
+
+### intersect and filter
+bash int-flt-var.sh \
+> "logs/int-flt-var.out" 2> "logs/int-flt-var.err"
 
 ### merge the variants of evolved samples
 bash merge-smallv.sh "${ctrl_samp}" "${popu_samp}" "${repl_ids}" \
